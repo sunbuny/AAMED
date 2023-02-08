@@ -179,7 +179,7 @@ void FLED::drawEllipses()
 		ellipse(Img_T, temp, cv::Scalar(0, 0, 255), 2);
 	}
 	cv::imshow("Ellipses", Img_T);
-	cout << "The number of ellipses£º" << detEllipses.size() << endl;
+	cout << "The number of ellipsesï¼š" << detEllipses.size() << endl;
 }
 void FLED::drawFLED(Mat ImgC, double ust_time)
 {

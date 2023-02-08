@@ -1,5 +1,5 @@
 clc;clear;close all;
-% ellipse ÄâºÏ²âÊÔ
+% ellipse æ‹Ÿåˆæµ‹è¯•
 
 elp = [50,100,60,40,pi/3];
 

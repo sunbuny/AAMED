@@ -6,17 +6,17 @@ void mexFunction(int nlhs,       mxArray *plhs[],
 {
     if(nlhs!=1)
     {
-        mexErrMsgTxt("Êä³ö²ÎÊı¸öÊı±ØĞëÎª1¸ö.");
+        mexErrMsgTxt("è¾“å‡ºå‚æ•°ä¸ªæ•°å¿…é¡»ä¸º1ä¸ª.");
     }
     if(nrhs!=1)
     {
-        mexErrMsgTxt("ÊäÈë²ÎÊı¸öÊı±ØĞëÎª1¸ö.");
+        mexErrMsgTxt("è¾“å…¥å‚æ•°ä¸ªæ•°å¿…é¡»ä¸º1ä¸ª.");
     }
     size_t allnum = mxGetNumberOfElements(prhs[0]);
     unsigned char* _d = (unsigned char*)mxGetPr(prhs[0]);
     int now_need = 4;
     if(allnum < now_need)
-        mexErrMsgTxt("½âÎöVVPËùĞèÊı¾İ²»×ã");
+        mexErrMsgTxt("è§£æVVPæ‰€éœ€æ•°æ®ä¸è¶³");
     int elpNum = *((int*)_d);
     _d+=4;
     if(elpNum == 0)
@@ -26,7 +26,7 @@ void mexFunction(int nlhs,       mxArray *plhs[],
     }
     now_need += elpNum * 5 * sizeof(float);
     if(allnum < now_need)
-        mexErrMsgTxt("½âÎöVVPËùĞèÊı¾İ²»×ã");
+        mexErrMsgTxt("è§£æVVPæ‰€éœ€æ•°æ®ä¸è¶³");
     plhs[0] = mxCreateDoubleMatrix(elpNum, 5, mxREAL);
     double* _pdata = (double*)mxGetPr(plhs[0]);
     float *_rrect = (float*)_d;

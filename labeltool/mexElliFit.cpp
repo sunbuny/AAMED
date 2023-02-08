@@ -116,7 +116,7 @@ void ElliFit(double *data, double &error, cv::RotatedRect &res)
 		else
 			rp[4] = -CV_PI / 4;
 	}
-	//ÖÁ´ËÄâºÏ³öÀ´µÄ²ÎÊıĞÅÏ¢ÊÇÒÔ×óÉÏ½Ç0,0Î»ÖÃÎªÔ­µã£¬rowÎªxÖá£¬colÎªyÖáÎª»ù×¼µÄ
+	//è‡³æ­¤æ‹Ÿåˆå‡ºæ¥çš„å‚æ•°ä¿¡æ¯æ˜¯ä»¥å·¦ä¸Šè§’0,0ä½ç½®ä¸ºåŸç‚¹ï¼Œrowä¸ºxè½´ï¼Œcolä¸ºyè½´ä¸ºåŸºå‡†çš„
 	a1p = cos(rp[4])*_dls_X[3] + sin(rp[4])*_dls_X[4];
 	a2p = -sin(rp[4])*_dls_X[3] + cos(rp[4])*_dls_X[4];
 	a11p = _dls_X[0] + tan(rp[4])*_dls_X[1];

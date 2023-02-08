@@ -1,20 +1,20 @@
 function [ration, overlapdot] = CalculateOverlap(elp1,elp2)
-% ¼ÆËãÁ½¸öÍÖÔ²µÄÖØµşÃæ»ı
-% elp¸ñÊ½Îª[epl(1),elp(2)]ÎªÍÖÔ²ÖĞĞÄµã£¬[elp1(3),elp(4)]ÎªÍÖÔ²°ë³¤¶ÌÖá,elp(5)Îª»¡¶ÈÖÆĞı×ª½Ç
+% è®¡ç®—ä¸¤ä¸ªæ¤­åœ†çš„é‡å é¢ç§¯
+% elpæ ¼å¼ä¸º[epl(1),elp(2)]ä¸ºæ¤­åœ†ä¸­å¿ƒç‚¹ï¼Œ[elp1(3),elp(4)]ä¸ºæ¤­åœ†åŠé•¿çŸ­è½´,elp(5)ä¸ºå¼§åº¦åˆ¶æ—‹è½¬è§’
 
-%% ĞÎ×´²ÎÊı×ª»»ÎªÍÖÔ²µÄÒ»°ã·½³Ì
+%% å½¢çŠ¶å‚æ•°è½¬æ¢ä¸ºæ¤­åœ†çš„ä¸€èˆ¬æ–¹ç¨‹
 parm1 = ELPShape2Equation(elp1);
 parm2 = ELPShape2Equation(elp2);
 
-%% ¼ÆËãÍÖÔ²Y·½ÏòµÄËÑË÷·¶Î§
+%% è®¡ç®—æ¤­åœ†Yæ–¹å‘çš„æœç´¢èŒƒå›´
 y1_min = elp1(2) - max(elp1(3:4)); y1_max = elp1(2) + max(elp1(3:4));
 y2_min = elp2(2) - max(elp2(3:4)); y2_max = elp2(2) + max(elp2(3:4));
 y_min = floor(max([y1_min,y2_min]));
 y_max = ceil(min([y1_max,y2_max]));
 search_step = 0.2;
 
-%% ¼ÆËãÖØµşÃæ»ı
-S12 = 0; % S12±íÊ¾ÖØµşÃæ»ı
+%% è®¡ç®—é‡å é¢ç§¯
+S12 = 0; % S12è¡¨ç¤ºé‡å é¢ç§¯
 overrange = zeros(length(y_min:search_step:y_max),3); idx_lap = 1;
 
 

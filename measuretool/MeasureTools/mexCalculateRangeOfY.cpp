@@ -7,11 +7,11 @@ void mexFunction(int nlhs,       mxArray *plhs[],
 {
     if(nlhs!=4)
     {
-        mexErrMsgTxt("ÊäÈë²ÎÊı¸öÊı±ØĞëÎª4¸ö.");
+        mexErrMsgTxt("è¾“å…¥å‚æ•°ä¸ªæ•°å¿…é¡»ä¸º4ä¸ª.");
     }
     if(nrhs!=1)
     {
-        mexErrMsgTxt("ÊäÈë²ÎÊı¸öÊı±ØĞëÎª1¸ö.");
+        mexErrMsgTxt("è¾“å…¥å‚æ•°ä¸ªæ•°å¿…é¡»ä¸º1ä¸ª.");
     }
     
     // Get the data;

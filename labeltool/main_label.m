@@ -8,7 +8,7 @@ push_key = [];
 % [filename, pathname] = uigetfile( ...
 %     {'*.jpg;*.tif;*.png;*.gif','All Image Files';...
 %     '*.*','All Files' },...
-%     'ÇëÑ¡ÔñÒª±ê¼ÇµÄÍ¼Æ¬');
+%     'è¯·é€‰æ‹©è¦æ ‡è®°çš„å›¾ç‰‡');
 
 img = imread([filename, pathname]);
 
@@ -23,12 +23,12 @@ hold on;
 
 
 while 1
-    if strcmp(push_key, 'q') % °´ÏÂqÍË³ö±ê¼Ç
+    if strcmp(push_key, 'q') % æŒ‰ä¸‹qé€€å‡ºæ ‡è®°
         break;
     end
     pt = [];
     while 1
-        if strcmp(push_key, 'return') % °´ÏÂ»Ø³µ½áÊøµ±Ç°±ê¼Ç
+        if strcmp(push_key, 'return') % æŒ‰ä¸‹å›è½¦ç»“æŸå½“å‰æ ‡è®°
             break;
         end
     end

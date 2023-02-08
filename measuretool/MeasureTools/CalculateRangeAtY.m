@@ -1,5 +1,5 @@
 function [x1,x2] = CalculateRangeAtY(elpparm,y)
-% ¼ÆËãÍÖÔ²Ò»°ã·½³Ìµ±yÖµÒÑÖªÊ±£¬¼ÆËã³öµÄÁ½¸ö½»µã£¬Èç¹û²»´æÔÚÔòÎª¿Õ¼¯
+% è®¡ç®—æ¤­åœ†ä¸€èˆ¬æ–¹ç¨‹å½“yå€¼å·²çŸ¥æ—¶ï¼Œè®¡ç®—å‡ºçš„ä¸¤ä¸ªäº¤ç‚¹ï¼Œå¦‚æœä¸å­˜åœ¨åˆ™ä¸ºç©ºé›†
 elpparm = double(elpparm);
 A = elpparm(1); B = elpparm(2); C = elpparm(3); D = elpparm(4); E = elpparm(5); F = elpparm(6);
 Delta = (B*y+D)^2 - A*(C*y^2+2*E*y+F);

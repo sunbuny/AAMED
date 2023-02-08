@@ -57,7 +57,7 @@ protected:
 
 struct SORTDATA
 {
-	double val; //²ÎÓëÄâºÏµÄÏñËØµã¸öÊı
-	int idx_l;  //±»Á¬½Ó±êÇ©
-	int idx_r;  //Á¬½Ó±êÇ©
+	double val; //å‚ä¸æ‹Ÿåˆçš„åƒç´ ç‚¹ä¸ªæ•°
+	int idx_l;  //è¢«è¿æ¥æ ‡ç­¾
+	int idx_r;  //è¿æ¥æ ‡ç­¾
 };

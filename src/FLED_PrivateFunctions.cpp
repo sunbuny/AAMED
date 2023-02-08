@@ -9,14 +9,14 @@ void FLED::clockwiseContour(vector<Point> &antiContour)
 	dot_ed = antiContour[antiContour.size() - 1];
 	int idxdHead = dIDX(antiContour[0].x, antiContour[0].y);
 	int idxdTail = dIDX(dot_ed.x, dot_ed.y);
-	if (data[idxdHead].lastAddress != NULL)//Èç¹û·Ç¿Õ£¬ÔòÑ¡ÔñÆğµãÎªÏÂÒ»µã
+	if (data[idxdHead].lastAddress != NULL)//å¦‚æœéç©ºï¼Œåˆ™é€‰æ‹©èµ·ç‚¹ä¸ºä¸‹ä¸€ç‚¹
 	{
-		antiContour[0] = data[idxdHead].nextAddress->Location;//Ñ¡ÔñÆğµãÎªÏÂÒ»µã
+		antiContour[0] = data[idxdHead].nextAddress->Location;//é€‰æ‹©èµ·ç‚¹ä¸ºä¸‹ä¸€ç‚¹
 		data[idxdHead].nextAddress->lastAddress = NULL;
 		data[idxdHead].nextAddress = NULL;
 		idxdHead = dIDX(antiContour[0].x, antiContour[0].y);
 	}
-	if (data[idxdTail].nextAddress != NULL)//Èç¹û²»Îª¿Õ£¬ÔòÑ¡ÔñÆğµãÎªÇ°Ò»µã
+	if (data[idxdTail].nextAddress != NULL)//å¦‚æœä¸ä¸ºç©ºï¼Œåˆ™é€‰æ‹©èµ·ç‚¹ä¸ºå‰ä¸€ç‚¹
 	{
 		dot_ed = data[idxdTail].lastAddress->Location;
 		antiContour[antiContour.size() - 1] = dot_ed;
@@ -24,7 +24,7 @@ void FLED::clockwiseContour(vector<Point> &antiContour)
 		data[idxdTail].lastAddress = NULL;
 		idxdTail = dIDX(dot_ed.x, dot_ed.y);
 	}
-	//ÖÁ´Ë£¬ÆğµãºÍÖÕµã¾ùÒÑÔ¤´¦ÀíÍê±Ï£¬Ö»ĞèÒª¶ÔÕû¸ö»¡¶Î½øĞĞ½»»»´¦Àí¼´¿É
+	//è‡³æ­¤ï¼Œèµ·ç‚¹å’Œç»ˆç‚¹å‡å·²é¢„å¤„ç†å®Œæ¯•ï¼Œåªéœ€è¦å¯¹æ•´ä¸ªå¼§æ®µè¿›è¡Œäº¤æ¢å¤„ç†å³å¯
 	Node_FC * SigPot_Temp = NULL;
 	Point* Idx_Dot = NULL;
 	for (int step_idx = idxdTail; step_idx != idxdHead;)
@@ -34,10 +34,10 @@ void FLED::clockwiseContour(vector<Point> &antiContour)
 		data[step_idx].lastAddress = SigPot_Temp;
 		Idx_Dot = &(data[step_idx].nextAddress->Location);
 		step_idx = Idx_Dot->x*dCOLS + Idx_Dot->y;
-	}//×îºóÒ»¸öµãÃ»ÓĞ½»»»		
+	}//æœ€åä¸€ä¸ªç‚¹æ²¡æœ‰äº¤æ¢		
 	data[idxdHead].lastAddress = data[idxdHead].nextAddress;
 	data[idxdHead].nextAddress = NULL;
-	//ºóÃæ²ÎÓë¼ÆËã¾ùÓëÆğµãÖÕµãÓĞ¹Ø£¬»ù±¾²»»áÔÙÉæ¼°µ½ÄÚ²¿¾ØÕóÔªËØ£¬Òò´Ë½»»»Ê×Î²ÖØÒªĞÅÏ¢
+	//åé¢å‚ä¸è®¡ç®—å‡ä¸èµ·ç‚¹ç»ˆç‚¹æœ‰å…³ï¼ŒåŸºæœ¬ä¸ä¼šå†æ¶‰åŠåˆ°å†…éƒ¨çŸ©é˜µå…ƒç´ ï¼Œå› æ­¤äº¤æ¢é¦–å°¾é‡è¦ä¿¡æ¯
 	int ID_temp = data[idxdTail].edgeID;
 	double fit_sig_temp;
 	data[idxdTail].edgeID = data[idxdHead].edgeID;
@@ -102,7 +102,7 @@ void FLED::sortCombine(GPSD &fitComb, vector < cv::Vec<double, MAT_NUMBER> > arc
 {
 	double t1, t2;
 
-	int temp_pos = 0;//Í³¼Æ¸ºÊı¸öÊı
+	int temp_pos = 0;//ç»Ÿè®¡è´Ÿæ•°ä¸ªæ•°
 
 
 	int linking_num = arcMats[0].size(), linked_num = arcMats[1].size(), idx_i, idx;
@@ -133,7 +133,7 @@ void FLED::sortCombine(GPSD &fitComb, vector < cv::Vec<double, MAT_NUMBER> > arc
 	for (int i = 0; i < linking_num; i++)
 	{
 		idx = idx_i + i;
-		//if (s_group[0][i].size() == 1) //ËµÃ÷Õâ¸öÖ»ÓĞ1¸öfsa¶Î
+		//if (s_group[0][i].size() == 1) //è¯´æ˜è¿™ä¸ªåªæœ‰1ä¸ªfsaæ®µ
 		//{
 		//	if (FSA_ArcContours[s_group[0][i][0]].size() < MIN_DP_CONTOUR_NUM)
 		//	{
@@ -177,7 +177,7 @@ void FLED::sortCombine(GPSD &fitComb, vector < cv::Vec<double, MAT_NUMBER> > arc
 	//t2 = (double)cv::getTickCount();
 	//sum_time += (t2 - t1) * 1000 / cv::getTickFrequency();
 	//t1 = cv::getTickCount();
-	//cout << linking_num*linked_num + linking_num + linked_num << ". ¸´Êı¸öÊı£º" << temp_pos << endl;
+	//cout << linking_num*linked_num + linking_num + linked_num << ". å¤æ•°ä¸ªæ•°ï¼š" << temp_pos << endl;
 //	t1 = cv::getTickCount();
 	std::sort(fitComb[0], fitComb[linking_num*linked_num + linking_num + linked_num - 1], cmp);
 //	t2 = (double)cv::getTickCount();

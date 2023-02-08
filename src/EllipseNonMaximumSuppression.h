@@ -5,7 +5,7 @@
 
 
 
-// RotatedRect: ÖÐÐÄµã£¬³¤¶ÌÖá£¬Ðý×ª½Ç(½Ç¶È)
+// RotatedRect: ä¸­å¿ƒç‚¹ï¼Œé•¿çŸ­è½´ï¼Œæ—‹è½¬è§’(è§’åº¦)
 double EllipseOverlap(cv::RotatedRect &ellipse1, cv::RotatedRect &ellipse2);
 
 

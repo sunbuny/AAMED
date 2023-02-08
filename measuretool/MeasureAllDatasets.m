@@ -39,7 +39,7 @@ for dsi = [1,2,6,7,3,4,5,8,9]
     
     %% Read ground truth
     if strcmp(gt_label{dsi},'occluded') || strcmp(gt_label{dsi},'overlap') || ...
-            strcmp(gt_label{dsi},'concentric') || strcmp(gt_label{dsi},'concurrent') % ·ÂÕæÊı¾İ¼¯
+            strcmp(gt_label{dsi},'concentric') || strcmp(gt_label{dsi},'concurrent') % ä»¿çœŸæ•°æ®é›†
         [gt_elps, gt_size] = Read_Ellipse_GT([dirpath,'gt\'], ...
             [dirpath,'images\'], imgname, gt_label{dsi});
         T_overlap = 0.95;

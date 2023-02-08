@@ -1,11 +1,11 @@
 function [x,y] = GenerateElpData(elp, varargin)
-% ¸ù¾İÍÖÔ²µÄĞÎ×´²ÎÊı(xc, yc, semi-major, semi_minor, theta)£¬µÃµ½ÍÖÔ²µÄÊı¾İµã
+% æ ¹æ®æ¤­åœ†çš„å½¢çŠ¶å‚æ•°(xc, yc, semi-major, semi_minor, theta)ï¼Œå¾—åˆ°æ¤­åœ†çš„æ•°æ®ç‚¹
 if nargin == 1
     sita = linspace(0,2*pi,200);
 elseif nargin == 2
     sita = linspace(0,2*pi,varargin(1));
 else
-    error('ÊäÈë²ÎÊı¹ı¶à');
+    error('è¾“å…¥å‚æ•°è¿‡å¤š');
 end
 
 xc = elp(1); yc = elp(2); R = elp(3); r = elp(4); theta = elp(5);

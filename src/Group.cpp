@@ -1,5 +1,5 @@
 #include "FLED.h"
-//ËÑË÷×¼Ôò£¬ÊäÈëpoint_idx Ê±£¬ËµÃ÷ÊÇÒÔÕâ¸ö¸ù½ÚµãÎª»ù×¼£¬²éÕÒÏÂÒ»¸öÂú×ãÌõ¼şµÄ»¡¶Î
+//æœç´¢å‡†åˆ™ï¼Œè¾“å…¥point_idx æ—¶ï¼Œè¯´æ˜æ˜¯ä»¥è¿™ä¸ªæ ¹èŠ‚ç‚¹ä¸ºåŸºå‡†ï¼ŒæŸ¥æ‰¾ä¸‹ä¸€ä¸ªæ»¡è¶³æ¡ä»¶çš„å¼§æ®µ
 void FLED::PosteriorArcsSearch2(int point_idx)
 {
 	const int arcs_num = FSA_ArcContours.size(), group_num = temp.size();
@@ -13,7 +13,7 @@ void FLED::PosteriorArcsSearch2(int point_idx)
 	vector<Point> *single_arc = NULL;
 
 
-	//´´½¨µ±Ç°×éºÏ»¡¶ÎµÄËÑË÷Çø¼ä
+	//åˆ›å»ºå½“å‰ç»„åˆå¼§æ®µçš„æœç´¢åŒºé—´
 	Point *_st_data(NULL), *_ed_data(NULL);
 	int grouped_st_idx, grouped_ed_idx, grouped_ed_arc_num;
 	ArcSearchRegion grouped_arcs;
@@ -27,25 +27,25 @@ void FLED::PosteriorArcsSearch2(int point_idx)
 	while (1)
 	{
 		find_now_idx = lA[point_idx].findNextLinking(find_now_idx);
-		if (find_now_idx == -1) //ÔÙÒ²ÕÒ²»µ½¿ÉÒÔ×éºÏµÄ»¡¶Î
+		if (find_now_idx == -1) //å†ä¹Ÿæ‰¾ä¸åˆ°å¯ä»¥ç»„åˆçš„å¼§æ®µ
 		{
 			break;
 		}
-		find_arc_idx = lA[point_idx].idx_linking[find_now_idx]; //»ñÈ¡»¡¶Î½Ç±ê
-		if (*visited[find_arc_idx] != 0) //·ÃÎÊ¹ı
+		find_arc_idx = lA[point_idx].idx_linking[find_now_idx]; //è·å–å¼§æ®µè§’æ ‡
+		if (*visited[find_arc_idx] != 0) //è®¿é—®è¿‡
 			continue;
-		if (_arc_grouped_label[find_arc_idx] != 0) //±»×éºÏ¹ı
+		if (_arc_grouped_label[find_arc_idx] != 0) //è¢«ç»„åˆè¿‡
 			continue;
 
 		*visited[find_arc_idx] = 1;
 		*searched[find_arc_idx] = 1;
-		//ÑéÖ¤ºòÑ¡×éºÏµãµÄÖĞĞÄµãÊÇ·ñÔÚËÑË÷Çø¼äÄÚ(¿¼ÂÇµ½Ê×Î²¾ù¿ÉÄÜÓëµ±Ç°ÇøÓòÏàÁ¬£¬Ö»ÓĞÖĞµã²»»áÔì³ÉÇøÓòÔ¼ÊøµÄÊµĞ§).
+		//éªŒè¯å€™é€‰ç»„åˆç‚¹çš„ä¸­å¿ƒç‚¹æ˜¯å¦åœ¨æœç´¢åŒºé—´å†…(è€ƒè™‘åˆ°é¦–å°¾å‡å¯èƒ½ä¸å½“å‰åŒºåŸŸç›¸è¿ï¼Œåªæœ‰ä¸­ç‚¹ä¸ä¼šé€ æˆåŒºåŸŸçº¦æŸçš„å®æ•ˆ).
 		int single_num = FSA_ArcContours[find_arc_idx].size() / 2;
 		bool inSearch = grouped_arcs.isInSearchRegion(&(FSA_ArcContours[find_arc_idx][single_num]));
 		if (!inSearch)
 			continue;
 
-		// ÑéÖ¤ÊÇ·ñÂú×ãµÚ¶ş¸öÔ¼ÊøÊ½
+		// éªŒè¯æ˜¯å¦æ»¡è¶³ç¬¬äºŒä¸ªçº¦æŸå¼
 		idx_use = find_arc_idx*arcs_num;
 		isValid = true;
 		for (int i = 0; i < group_num; i++)
@@ -72,17 +72,17 @@ void FLED::PosteriorArcsSearch2(int point_idx)
 			continue;
 
 
-		// Õâ¸öµãÊÇÓĞĞ§µÄ
+		// è¿™ä¸ªç‚¹æ˜¯æœ‰æ•ˆçš„
 		temp.push_back(find_arc_idx);
 		push_fitmat(fitArcTemp.val, ArcFitMat[find_arc_idx].val, MAT_NUMBER);
 		PosteriorArcsSearch2(find_arc_idx);
 	}
 
-	//µ½ÕâËµÃ÷Ã»ÓĞ»¡¶Î¿ÉÒÔ×éºÏÁË£¬»ñµÃµ±Ç°×éºÏ£¬È»ºóÍËµôÒ»¸öµã
-	search_group[0].push_back(temp); //µÃµ½Ò»¸ö×éºÏ
-	search_arcMats[0].push_back(fitArcTemp); //´æ´¢¶ÔÓ¦×éºÏµÄÄâºÏ¾ØÕó
+	//åˆ°è¿™è¯´æ˜æ²¡æœ‰å¼§æ®µå¯ä»¥ç»„åˆäº†ï¼Œè·å¾—å½“å‰ç»„åˆï¼Œç„¶åé€€æ‰ä¸€ä¸ªç‚¹
+	search_group[0].push_back(temp); //å¾—åˆ°ä¸€ä¸ªç»„åˆ
+	search_arcMats[0].push_back(fitArcTemp); //å­˜å‚¨å¯¹åº”ç»„åˆçš„æ‹ŸåˆçŸ©é˜µ
 
-	pop_fitmat(fitArcTemp.val, ArcFitMat[temp.back()].val, MAT_NUMBER); //É¾µô×îºóÒ»¸öµãµÄÄâºÏ¾ØÕó
+	pop_fitmat(fitArcTemp.val, ArcFitMat[temp.back()].val, MAT_NUMBER); //åˆ æ‰æœ€åä¸€ä¸ªç‚¹çš„æ‹ŸåˆçŸ©é˜µ
 	temp.pop_back();
 	*visited[point_idx] = 0;
 
@@ -97,7 +97,7 @@ void FLED::PosteriorArcsSearch(int point_idx)
 
 	int *_temp_data = temp.data();
 	char check_val, temp_val;
-	//¼ì²éµ±Ç°µãÓëÆäËû×éºÏµãÊÇ·ñ¿ÉÏàÁ¬ Linking Search the 2th search constraint
+	//æ£€æŸ¥å½“å‰ç‚¹ä¸å…¶ä»–ç»„åˆç‚¹æ˜¯å¦å¯ç›¸è¿ Linking Search the 2th search constraint
 	for (int i = 0; i < group_num - 1; i++)
 	{
 		check_val = _link_data[idx_use + _temp_data[i]];
@@ -121,10 +121,10 @@ void FLED::PosteriorArcsSearch(int point_idx)
 
 	if (isValid == false)
 	{
-		search_group[0].push_back(temp); //µÃµ½Ò»¸ö×éºÏ
-		search_arcMats[0].push_back(fitArcTemp); //´æ´¢¶ÔÓ¦×éºÏµÄÄâºÏ¾ØÕó
+		search_group[0].push_back(temp); //å¾—åˆ°ä¸€ä¸ªç»„åˆ
+		search_arcMats[0].push_back(fitArcTemp); //å­˜å‚¨å¯¹åº”ç»„åˆçš„æ‹ŸåˆçŸ©é˜µ
 
-		pop_fitmat(fitArcTemp.val, ArcFitMat[temp.back()].val, MAT_NUMBER); //É¾µô×îºóÒ»¸öµãµÄÄâºÏ¾ØÕó
+		pop_fitmat(fitArcTemp.val, ArcFitMat[temp.back()].val, MAT_NUMBER); //åˆ æ‰æœ€åä¸€ä¸ªç‚¹çš„æ‹ŸåˆçŸ©é˜µ
 		temp.pop_back();
 		*visited[point_idx] = 0;
 
@@ -135,11 +135,11 @@ void FLED::PosteriorArcsSearch(int point_idx)
 	while (1)
 	{
 		find_now_idx = lA[point_idx].findNextLinking(find_now_idx);
-		if (find_now_idx < 0)//Ã»ÓĞ¿ÉÒÔÏàÁ¬µÄ»¡¶Î
+		if (find_now_idx < 0)//æ²¡æœ‰å¯ä»¥ç›¸è¿çš„å¼§æ®µ
 		{
-			search_group[0].push_back(temp); //µÃµ½Ò»¸ö×éºÏ
-			search_arcMats[0].push_back(fitArcTemp); //´æ´¢¶ÔÓ¦×éºÏµÄÄâºÏ¾ØÕó
-			pop_fitmat(fitArcTemp.val, ArcFitMat[temp.back()].val, MAT_NUMBER); //É¾µô×îºóÒ»¸öµãµÄÄâºÏ¾ØÕó
+			search_group[0].push_back(temp); //å¾—åˆ°ä¸€ä¸ªç»„åˆ
+			search_arcMats[0].push_back(fitArcTemp); //å­˜å‚¨å¯¹åº”ç»„åˆçš„æ‹ŸåˆçŸ©é˜µ
+			pop_fitmat(fitArcTemp.val, ArcFitMat[temp.back()].val, MAT_NUMBER); //åˆ æ‰æœ€åä¸€ä¸ªç‚¹çš„æ‹ŸåˆçŸ©é˜µ
 			temp.pop_back();
 			*visited[point_idx] = 0;
 			break;
@@ -175,12 +175,12 @@ void FLED::AnteriorArcsSearch2(int point_idx)
 	vector<Point> *single_arc = NULL;
 
 
-	//´´½¨µ±Ç°×éºÏ»¡¶ÎµÄËÑË÷Çø¼ä
+	//åˆ›å»ºå½“å‰ç»„åˆå¼§æ®µçš„æœç´¢åŒºé—´
 	Point *_st_data(NULL), *_ed_data(NULL);
 	int grouped_st_idx, grouped_ed_idx, grouped_ed_arc_num;
 	ArcSearchRegion grouped_arcs;
 
-	//ÓëÇ°Ãæ²»Í¬µÄÊÇ£¬ËÑË÷µãµÄË³ĞòĞèÒªµ÷»»
+	//ä¸å‰é¢ä¸åŒçš„æ˜¯ï¼Œæœç´¢ç‚¹çš„é¡ºåºéœ€è¦è°ƒæ¢
 	grouped_st_idx = _temp_data[group_num - 1], grouped_ed_idx = _temp_data[0];
 	_st_data = FSA_ArcContours[grouped_st_idx].data();
 	grouped_ed_arc_num = FSA_ArcContours[grouped_ed_idx].size();
@@ -190,27 +190,27 @@ void FLED::AnteriorArcsSearch2(int point_idx)
 	while (1)
 	{
 		find_now_idx = lA[point_idx].findNextLinked(find_now_idx);
-		if (find_now_idx == -1) //ÔÙÒ²ÕÒ²»µ½¿ÉÒÔ×éºÏµÄ»¡¶Î
+		if (find_now_idx == -1) //å†ä¹Ÿæ‰¾ä¸åˆ°å¯ä»¥ç»„åˆçš„å¼§æ®µ
 		{
 			break;
 		}
-		find_arc_idx = lA[point_idx].idx_linked[find_now_idx]; //»ñÈ¡»¡¶Î½Ç±ê
-		if (*visited[find_arc_idx] != 0) //·ÃÎÊ¹ı
+		find_arc_idx = lA[point_idx].idx_linked[find_now_idx]; //è·å–å¼§æ®µè§’æ ‡
+		if (*visited[find_arc_idx] != 0) //è®¿é—®è¿‡
 			continue;
-		if (_arc_grouped_label[find_arc_idx] != 0) //±»×éºÏ¹ı
+		if (_arc_grouped_label[find_arc_idx] != 0) //è¢«ç»„åˆè¿‡
 			continue;
-		if (*searched[find_arc_idx] != 0) //±»Ö®Ç°Ëã·¨ËÑË÷¹ı
+		if (*searched[find_arc_idx] != 0) //è¢«ä¹‹å‰ç®—æ³•æœç´¢è¿‡
 			continue;
 
 		*visited[find_arc_idx] = 1;
 
-		//ÑéÖ¤ºòÑ¡×éºÏµãµÄÖĞĞÄµãÊÇ·ñÔÚËÑË÷Çø¼äÄÚ(¿¼ÂÇµ½Ê×Î²¾ù¿ÉÄÜÓëµ±Ç°ÇøÓòÏàÁ¬£¬Ö»ÓĞÖĞµã²»»áÔì³ÉÇøÓòÔ¼ÊøµÄÊµĞ§).
+		//éªŒè¯å€™é€‰ç»„åˆç‚¹çš„ä¸­å¿ƒç‚¹æ˜¯å¦åœ¨æœç´¢åŒºé—´å†…(è€ƒè™‘åˆ°é¦–å°¾å‡å¯èƒ½ä¸å½“å‰åŒºåŸŸç›¸è¿ï¼Œåªæœ‰ä¸­ç‚¹ä¸ä¼šé€ æˆåŒºåŸŸçº¦æŸçš„å®æ•ˆ).
 		int single_num = FSA_ArcContours[find_arc_idx].size() / 2;
 		bool inSearch = grouped_arcs.isInSearchRegion(&(FSA_ArcContours[find_arc_idx][single_num]));
 		if (!inSearch)
 			continue;
 
-		// ÑéÖ¤ÊÇ·ñÂú×ãµÚ¶ş¸öÔ¼ÊøÊ½
+		// éªŒè¯æ˜¯å¦æ»¡è¶³ç¬¬äºŒä¸ªçº¦æŸå¼
 		idx_use = find_arc_idx*arcs_num;
 		isValid = true;
 		for (int i = 0; i < group_num; i++)
@@ -237,17 +237,17 @@ void FLED::AnteriorArcsSearch2(int point_idx)
 			continue;
 
 
-		// Õâ¸öµãÊÇÓĞĞ§µÄ
+		// è¿™ä¸ªç‚¹æ˜¯æœ‰æ•ˆçš„
 		temp.push_back(find_arc_idx);
 		push_fitmat(fitArcTemp.val, ArcFitMat[find_arc_idx].val, MAT_NUMBER);
 		AnteriorArcsSearch2(find_arc_idx);
 	}
 
-	//µ½ÕâËµÃ÷Ã»ÓĞ»¡¶Î¿ÉÒÔ×éºÏÁË£¬»ñµÃµ±Ç°×éºÏ£¬È»ºóÍËµôÒ»¸öµã
-	search_group[1].push_back(temp); //µÃµ½Ò»¸ö×éºÏ
-	search_arcMats[1].push_back(fitArcTemp); //´æ´¢¶ÔÓ¦×éºÏµÄÄâºÏ¾ØÕó
+	//åˆ°è¿™è¯´æ˜æ²¡æœ‰å¼§æ®µå¯ä»¥ç»„åˆäº†ï¼Œè·å¾—å½“å‰ç»„åˆï¼Œç„¶åé€€æ‰ä¸€ä¸ªç‚¹
+	search_group[1].push_back(temp); //å¾—åˆ°ä¸€ä¸ªç»„åˆ
+	search_arcMats[1].push_back(fitArcTemp); //å­˜å‚¨å¯¹åº”ç»„åˆçš„æ‹ŸåˆçŸ©é˜µ
 
-	pop_fitmat(fitArcTemp.val, ArcFitMat[temp.back()].val, MAT_NUMBER); //É¾µô×îºóÒ»¸öµãµÄÄâºÏ¾ØÕó
+	pop_fitmat(fitArcTemp.val, ArcFitMat[temp.back()].val, MAT_NUMBER); //åˆ æ‰æœ€åä¸€ä¸ªç‚¹çš„æ‹ŸåˆçŸ©é˜µ
 	temp.pop_back();
 	*visited[point_idx] = 0;
 }
@@ -266,7 +266,7 @@ void FLED::AnteriorArcsSearch(int point_idx)
 
 
 
-	//¼ì²éµ±Ç°µãÓëÆäËû×éºÏµãÊÇ·ñ¿ÉÏàÁ¬ Linking Search the 2th search constraint
+	//æ£€æŸ¥å½“å‰ç‚¹ä¸å…¶ä»–ç»„åˆç‚¹æ˜¯å¦å¯ç›¸è¿ Linking Search the 2th search constraint
 	for (int i = 0; i < group_num - 1; i++)
 	{
 		check_val = _link_data[idx_use + _temp_data[i]];
@@ -288,10 +288,10 @@ void FLED::AnteriorArcsSearch(int point_idx)
 	}
 	if (/*temp.size() > MAX_COMBINATION_ARCS ||*/ isValid == false)
 	{
-		search_group[1].push_back(temp); //µÃµ½Ò»¸ö×éºÏ
-		search_arcMats[1].push_back(fitArcTemp); //´æ´¢¶ÔÓ¦×éºÏµÄÄâºÏ¾ØÕó
+		search_group[1].push_back(temp); //å¾—åˆ°ä¸€ä¸ªç»„åˆ
+		search_arcMats[1].push_back(fitArcTemp); //å­˜å‚¨å¯¹åº”ç»„åˆçš„æ‹ŸåˆçŸ©é˜µ
 
-		pop_fitmat(fitArcTemp.val, ArcFitMat[temp.back()].val, MAT_NUMBER); //É¾µô×îºóÒ»¸öµãµÄÄâºÏ¾ØÕó
+		pop_fitmat(fitArcTemp.val, ArcFitMat[temp.back()].val, MAT_NUMBER); //åˆ æ‰æœ€åä¸€ä¸ªç‚¹çš„æ‹ŸåˆçŸ©é˜µ
 		temp.pop_back();
 
 		*visited[point_idx] = 0;
@@ -302,12 +302,12 @@ void FLED::AnteriorArcsSearch(int point_idx)
 	while (1)
 	{
 		find_now_idx = lA[point_idx].findNextLinked(find_now_idx);
-		if (find_now_idx < 0) //ËÑ²»µ½ĞÂµã
+		if (find_now_idx < 0) //æœä¸åˆ°æ–°ç‚¹
 		{
 			search_group[1].push_back(temp);
 			search_arcMats[1].push_back(fitArcTemp);
 
-			pop_fitmat(fitArcTemp.val, ArcFitMat[temp.back()].val, MAT_NUMBER); //É¾µô×îºóÒ»¸öµãµÄÄâºÏ¾ØÕó
+			pop_fitmat(fitArcTemp.val, ArcFitMat[temp.back()].val, MAT_NUMBER); //åˆ æ‰æœ€åä¸€ä¸ªç‚¹çš„æ‹ŸåˆçŸ©é˜µ
 			temp.pop_back();
 			*visited[point_idx] = 0;
 			break;
@@ -352,7 +352,7 @@ void FLED::BiDirectionVerification(GPSD &fitComb, vector < cv::Vec<double, MAT_N
 
 	for (int i = 0; i < fit_num; i++)
 	{
-		if (fitComb[i]->val < 0) //ÅĞ¶ÏÊÇ·ñÓĞĞ§
+		if (fitComb[i]->val < 0) //åˆ¤æ–­æ˜¯å¦æœ‰æ•ˆ
 			break;
 		bool fitres;
 		//t1 = cv::getTickCount();
@@ -376,11 +376,11 @@ void FLED::BiDirectionVerification(GPSD &fitComb, vector < cv::Vec<double, MAT_N
 				if (isCombValid == false)
 					break;
 			}
-			if (isCombValid == false)//Á½¸ö»¡¶Î²»ÄÜ×éºÏ
+			if (isCombValid == false)//ä¸¤ä¸ªå¼§æ®µä¸èƒ½ç»„åˆ
 				continue;
 			fitres = FittingConstraint(fitMats[0][idx_r].val, fitMats[1][idx_l].val, fitelpres);
 
-			//isBIDIR = 10; //ËµÃ÷¿ªÊ¼×éºÏ
+			//isBIDIR = 10; //è¯´æ˜å¼€å§‹ç»„åˆ
 
 		}
 		else if (idx_l >= 0)
@@ -396,7 +396,7 @@ void FLED::BiDirectionVerification(GPSD &fitComb, vector < cv::Vec<double, MAT_N
 			continue;
 
 		//t1 = cv::getTickCount();
-		//ÀûÓÃvalidate½øĞĞ±È½Ï
+		//åˆ©ç”¨validateè¿›è¡Œæ¯”è¾ƒ
 		double detScore;
 
 #ifdef DETAIL_BREAKDOWN
@@ -426,7 +426,7 @@ void FLED::BiDirectionVerification(GPSD &fitComb, vector < cv::Vec<double, MAT_N
 		detEllipseScore.push_back(detScore);
 
 		//if (isBIDIR == 10)
-		//	cout << "ÕâÕÅÍ¼ÓĞÁ½ÖÖ·½ÏòÄâºÏµÄ½á¹û" << endl;
+		//	cout << "è¿™å¼ å›¾æœ‰ä¸¤ç§æ–¹å‘æ‹Ÿåˆçš„ç»“æœ" << endl;
 		break;
 
 

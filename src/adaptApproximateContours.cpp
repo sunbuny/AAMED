@@ -158,7 +158,7 @@ void adaptApproximateContours(const std::vector<cv::Point> &pts, std::vector<cv:
 	//deduplicate and sort Dominant Points indices
 	DominantPointsIdx.erase(unique(DominantPointsIdx.begin(), DominantPointsIdx.end()), DominantPointsIdx.end());
 
-	sort(DominantPointsIdx.begin(), DominantPointsIdx.end(), less<int>());//Éı
+	sort(DominantPointsIdx.begin(), DominantPointsIdx.end(), less<int>());//å‡
 
 	//generate list of dominant points
 	int count = 1;

@@ -88,12 +88,12 @@ guidata(hObject, handles);
 
 
 function open_new_img(tpath_name, tfilename, hObject, eventdata, handles)
-% Çå¿ÕÊı¾İ
+% æ¸…ç©ºæ•°æ®
 global filename pathname;
 global input_img;
-global select_points; % Ñ¡ÔñµÄµãµÄĞÅÏ¢
-global handle_plot handle_ellipse handle_global_ellipses; % »­µãµÄ¾ä±ú
-global push_key; % µ±Ç°°´¼ü
+global select_points; % é€‰æ‹©çš„ç‚¹çš„ä¿¡æ¯
+global handle_plot handle_ellipse handle_global_ellipses; % ç”»ç‚¹çš„å¥æŸ„
+global push_key; % å½“å‰æŒ‰é”®
 global fitEllipses;
 
 
@@ -133,18 +133,18 @@ hold off;
 guidata(hObject, handles);
 
 
-% ´ò¿ªÍ¼Æ¬£¬¼ÇÂ¼×ø±ê
+% æ‰“å¼€å›¾ç‰‡ï¼Œè®°å½•åæ ‡
 function pushbutton1_Callback(hObject, eventdata, handles)
 % hObject    handle to pushbutton1 (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
-% Çå¿ÕÊı¾İ
+% æ¸…ç©ºæ•°æ®
 global filename pathname;
 global input_img;
-global select_points; % Ñ¡ÔñµÄµãµÄĞÅÏ¢
-global handle_plot handle_ellipse handle_global_ellipses; % »­µãµÄ¾ä±ú
-global push_key; % µ±Ç°°´¼ü
+global select_points; % é€‰æ‹©çš„ç‚¹çš„ä¿¡æ¯
+global handle_plot handle_ellipse handle_global_ellipses; % ç”»ç‚¹çš„å¥æŸ„
+global push_key; % å½“å‰æŒ‰é”®
 global fitEllipses;
 
 
@@ -166,13 +166,13 @@ fitEllipses = [];
 [filename, pathname] = uigetfile( ...
     {'*.jpg;*.bmp;*.tif;*.png;*.gif','All Image Files';...
     '*.*','All Files' },...
-    'ÇëÑ¡ÔñÒª±ê¼ÇµÄÍ¼Æ¬');
+    'è¯·é€‰æ‹©è¦æ ‡è®°çš„å›¾ç‰‡');
 try
     input_img = imshow([pathname, filename]);
     set(handles.text_filepath, 'string', pathname);
     set(handles.text_filename, 'string', filename);
 catch
-    warning(['´ò¿ªÍ¼Æ¬£º', pathname, filename, 'Ê§°Ü¡£']);
+    warning(['æ‰“å¼€å›¾ç‰‡ï¼š', pathname, filename, 'å¤±è´¥ã€‚']);
 end
 guidata(hObject, handles);
 
@@ -183,9 +183,9 @@ function bun_select_points_Callback(hObject, eventdata, handles)
 % hObject    handle to bun_select_points (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-global select_points; % Ñ¡ÔñµÄµãµÄĞÅÏ¢
-global handle_plot handle_ellipse handle_global_ellipses; % »­µãµÄ¾ä±ú
-global push_key; % µ±Ç°°´¼ü
+global select_points; % é€‰æ‹©çš„ç‚¹çš„ä¿¡æ¯
+global handle_plot handle_ellipse handle_global_ellipses; % ç”»ç‚¹çš„å¥æŸ„
+global push_key; % å½“å‰æŒ‰é”®
 global fitEllipses;
 
 
@@ -214,7 +214,7 @@ while 1
         break;
     end
     if size(pt,1) > 0
-        if x == pt(end,1) && y == pt(end,2) % Ë«»÷±íÊ¾Í¬Ò»¸öµã£¬ÔòÈÏÎªÊ§°Ü
+        if x == pt(end,1) && y == pt(end,2) % åŒå‡»è¡¨ç¤ºåŒä¸€ä¸ªç‚¹ï¼Œåˆ™è®¤ä¸ºå¤±è´¥
             flag_wrong_points = 1;
             break;
         end
@@ -226,11 +226,11 @@ while 1
     end
     handle_plot = plot(pt(:,1),pt(:,2),'og','markerface', 'g');
     
-    if size(pt, 1) >= 6 % Ñ¡ÔñµÄµã³¬¹ıÁË6¸ö£¬½øĞĞÍÖÔ²ÄâºÏ
+    if size(pt, 1) >= 6 % é€‰æ‹©çš„ç‚¹è¶…è¿‡äº†6ä¸ªï¼Œè¿›è¡Œæ¤­åœ†æ‹Ÿåˆ
         delete(handle_plot);
         handle_plot = plot(pt(:,1),pt(:,2),'oy','markerface', 'y');
         fitelp = mexElliFit(pt);
-        if fitelp(3) > 0 || fitelp(4) > 0 % »æÖÆÄâºÏÍÖÔ²
+        if fitelp(3) > 0 || fitelp(4) > 0 % ç»˜åˆ¶æ‹Ÿåˆæ¤­åœ†
             if ~isempty(handle_ellipse)
                 delete(handle_ellipse);
             end
@@ -330,7 +330,7 @@ guidata(hObject, handles);
 
 
 
-% --- Êı¾İÎÄ¼ş±£´æ
+% --- æ•°æ®æ–‡ä»¶ä¿å­˜
 function btn_save_Callback(hObject, eventdata, handles)
 global fitEllipses select_points;
 global filename pathname;
@@ -347,7 +347,7 @@ function btn_batch_Callback(hObject, eventdata, handles)
 % handles    structure with handles and user data (see GUIDATA)
 global fileNames file_pointer_idx input_img folderpath
 
-folderpath = uigetdir('*.*','ÇëÑ¡ÔñÎÄ¼ş¼Ğ');
+folderpath = uigetdir('*.*','è¯·é€‰æ‹©æ–‡ä»¶å¤¹');
 
 fileFolder=fullfile(folderpath);
 

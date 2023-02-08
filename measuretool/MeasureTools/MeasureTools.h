@@ -2,19 +2,19 @@
 #include <vector>
 
 
-//ÍÖÔ²ĞÎ×´²ÎÊı×ª»»ÎªÒ»°ã·½³Ì²ÎÊı
+//æ¤­åœ†å½¢çŠ¶å‚æ•°è½¬æ¢ä¸ºä¸€èˆ¬æ–¹ç¨‹å‚æ•°
 void ELPShape2Equation(double *elpshape, double *outparms);
 
-// ¼ÆËãÍÖÔ²Ò»°ã·½³Ìµ±yÖµÒÑÖªÊ±£¬¼ÆËã³öµÄÁ½¸ö½»µã£¬Èç¹û²»´æÔÚÔòÎª¿Õ¼¯
+// è®¡ç®—æ¤­åœ†ä¸€èˆ¬æ–¹ç¨‹å½“yå€¼å·²çŸ¥æ—¶ï¼Œè®¡ç®—å‡ºçš„ä¸¤ä¸ªäº¤ç‚¹ï¼Œå¦‚æœä¸å­˜åœ¨åˆ™ä¸ºç©ºé›†
 void CalculateRangeAtY(double *elpparm, double y, double *x1, double *x2);
 
 
 
-// ¼ÆËãÍÖÔ²µÄÖØºÏ¶È
+// è®¡ç®—æ¤­åœ†çš„é‡åˆåº¦
 void CalculateOverlap(double *elp1, double *elp2, double *ration, std::vector<double> *overlapdot);
 
-// ¸ø¶¨Ò»¸öÍÖÔ²£¬¼ÆËãÆäyµÄÈ¡Öµ·¶Î§
+// ç»™å®šä¸€ä¸ªæ¤­åœ†ï¼Œè®¡ç®—å…¶yçš„å–å€¼èŒƒå›´
 void CalculateRangeOfY(double *elpshape, double *x_min, double *x_max, double *y_min, double *y_max);
 
-// ¸ü¿ìËÙµÄ¼ÆËãÍÖÔ²overlapµÄÒ»ÖÖ·½·¨
+// æ›´å¿«é€Ÿçš„è®¡ç®—æ¤­åœ†overlapçš„ä¸€ç§æ–¹æ³•
 void fasterCalculateOverlap(double *elp1, double *elp2, double *ration, std::vector<double> *overlapdot);

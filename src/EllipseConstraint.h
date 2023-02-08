@@ -2,11 +2,11 @@
 
 #include <opencv2/opencv.hpp>
 
-// 给定4个点可以确定一个搜索区间，
+// 缁欏畾4涓偣鍙互纭畾涓�涓悳绱㈠尯闂达紝
 class ArcSearchRegion
 {
 public:
-	//创建搜索区间
+	//鍒涘缓鎼滅储鍖洪棿
 	void create(cv::Point *l1, cv::Point *l2, cv::Point *l3, cv::Point *l4)
 	{
 		A_1 = *l1, A_2 = *l2, A__2 = *l3, A__1 = *l4;

@@ -7,17 +7,17 @@
 #define FLED_FSAARCSLINKMATRIX          0x24
 #define FLED_DPCONTOURS                 0x25
 
-//·Ö×éµÄ4ÖÖÇé¿ö£¬ÆäÖÐF´ú±í¾àÀëÔ¶£¬C´ú±í¾àÀë½ü
-#define FLED_GROUPING_IBmA1_IAnB1      0x00//³õÊ¼¾àÀë
-#define FLED_GROUPING_FBmA1_FAnB1      0x00//ËÑË÷µãÔ¶£¬Î²µãÔ¶
-#define FLED_GROUPING_FBmA1_CAnB1      0x01//ËÑË÷µã½ü£¬Î²µãÔ¶
-#define FLED_GROUPING_CBmA1_FAnB1      0x10//ËÑË÷µãÔ¶£¬Î²µã½ü
-#define FLED_GROUPING_CBmA1_CAnB1      0x11//ËÑË÷µã½ü£¬Î²µã½ü
-#define FLED_GROUPING_CAnB1            0x01//ËÑË÷µã½ü
-#define FLED_GROUPING_CBmA1            0x10//Î²µã½ü
+//åˆ†ç»„çš„4ç§æƒ…å†µï¼Œå…¶ä¸­Fä»£è¡¨è·ç¦»è¿œï¼ŒCä»£è¡¨è·ç¦»è¿‘
+#define FLED_GROUPING_IBmA1_IAnB1      0x00//åˆå§‹è·ç¦»
+#define FLED_GROUPING_FBmA1_FAnB1      0x00//æœç´¢ç‚¹è¿œï¼Œå°¾ç‚¹è¿œ
+#define FLED_GROUPING_FBmA1_CAnB1      0x01//æœç´¢ç‚¹è¿‘ï¼Œå°¾ç‚¹è¿œ
+#define FLED_GROUPING_CBmA1_FAnB1      0x10//æœç´¢ç‚¹è¿œï¼Œå°¾ç‚¹è¿‘
+#define FLED_GROUPING_CBmA1_CAnB1      0x11//æœç´¢ç‚¹è¿‘ï¼Œå°¾ç‚¹è¿‘
+#define FLED_GROUPING_CAnB1            0x01//æœç´¢ç‚¹è¿‘
+#define FLED_GROUPING_CBmA1            0x10//å°¾ç‚¹è¿‘
 
-// ÔÚÁÚÓò·Ö×éÖÐ£¬È¥µôÁË¸ù¾ÝÑÕÉ«ÅÐ¶ÏÊÇ·ñÁ¬½ÓµÄÌõ¼þ¡£ÒòÎª¾ÍËãÈ¥µôÁË£¬ÔÚºóÃæµÄÈ«¾Ö·Ö×éÒ²»áÖØÐÂºÏ²¢Ò»´Î½øÐÐÅÐ¶Ï£¬Õâ´ÎÌá³öµÄkdÊ÷Ëã·¨¿ÉÒÔ
-// ±ÜÃâÕâ¸öÎÊÌâ¡£
+// åœ¨é‚»åŸŸåˆ†ç»„ä¸­ï¼ŒåŽ»æŽ‰äº†æ ¹æ®é¢œè‰²åˆ¤æ–­æ˜¯å¦è¿žæŽ¥çš„æ¡ä»¶ã€‚å› ä¸ºå°±ç®—åŽ»æŽ‰äº†ï¼Œåœ¨åŽé¢çš„å…¨å±€åˆ†ç»„ä¹Ÿä¼šé‡æ–°åˆå¹¶ä¸€æ¬¡è¿›è¡Œåˆ¤æ–­ï¼Œè¿™æ¬¡æå‡ºçš„kdæ ‘ç®—æ³•å¯ä»¥
+// é¿å…è¿™ä¸ªé—®é¢˜ã€‚
 
 
 #define FLED_SEARCH_LINKING            true
@@ -25,15 +25,15 @@
 
 
 
-// ---------------------¹¦ÄÜÇÐ»»²¿·Ö-----------------------
-// ×ÔÊÊÓ¦RDPËã·¨
+// ---------------------åŠŸèƒ½åˆ‡æ¢éƒ¨åˆ†-----------------------
+// è‡ªé€‚åº”RDPç®—æ³•
 #define ADAPT_APPROX_CONTOURS 1
-// ×ÔÊÊÓ¦ÇúÂÊ¹À¼ÆËã·¨
+// è‡ªé€‚åº”æ›²çŽ‡ä¼°è®¡ç®—æ³•
 #define DEFINITE_ERROR_BOUNDED 1
-// ÍÖÔ²ÑéÖ¤¼ÓËÙ
+// æ¤­åœ†éªŒè¯åŠ é€Ÿ
 #define FASTER_ELLIPSE_VALIDATION 0
 
-// Ñ¡ÔñÍÖÔ²¾ÛÀàËã·¨
+// é€‰æ‹©æ¤­åœ†èšç±»ç®—æ³•
 #define NONE_CLUSTER_METHOD   0
 #define PRASAD_CLUSTER_METHOD 1
 #define OUR_CLUSTER_METHOD    2
@@ -41,5 +41,5 @@
 // ------------------------------------------------------
 
 
-// ÊÇ·ñÐèÒªÍ³¼ÆÊ±¼ä
+// æ˜¯å¦éœ€è¦ç»Ÿè®¡æ—¶é—´
 #define DETAIL_BREAKDOWN

@@ -6,16 +6,16 @@ void mexFunction(int nlhs,       mxArray *plhs[],
 {
     if(nlhs!=1)
     {
-        mexErrMsgTxt("Êä³ö²ÎÊı¸öÊı±ØĞëÎª1¸ö.");
+        mexErrMsgTxt("è¾“å‡ºå‚æ•°ä¸ªæ•°å¿…é¡»ä¸º1ä¸ª.");
     }
     if(nrhs!=1)
     {
-        mexErrMsgTxt("ÊäÈë²ÎÊı¸öÊı±ØĞëÎª1¸ö.");
+        mexErrMsgTxt("è¾“å…¥å‚æ•°ä¸ªæ•°å¿…é¡»ä¸º1ä¸ª.");
     }
     
     size_t allnum = mxGetNumberOfElements(prhs[0]);
     if(allnum < 2 * sizeof(int))
-        mexErrMsgTxt("Basic²ÎÊı´óĞ¡Ğ¡ÓÚ2¸öint");
+        mexErrMsgTxt("Basicå‚æ•°å¤§å°å°äº2ä¸ªint");
     unsigned char *_d = (unsigned char *)mxGetPr(prhs[0]);
     int iROWS = *((int*)_d), iCOLS = *((int*)(_d+4));
     //mexPrintf("%d, %d\n", iROWS,iCOLS);

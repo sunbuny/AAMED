@@ -116,7 +116,7 @@ void adaptApproxPolyDP(std::vector<cv::Point> &pts, std::vector<cv::Point> &Domi
 	//deduplicate and sort Dominant Points indices
 	DominantPointsIdx.erase(unique(DominantPointsIdx.begin(), DominantPointsIdx.end()), DominantPointsIdx.end());
 
-	sort(DominantPointsIdx.begin(), DominantPointsIdx.end(), less<int>());//…˝
+	sort(DominantPointsIdx.begin(), DominantPointsIdx.end(), less<int>());//Âçá
 
 	//generate list of dominant points
 	for (int i = 0; i < DominantPointsIdx.size(); i++)

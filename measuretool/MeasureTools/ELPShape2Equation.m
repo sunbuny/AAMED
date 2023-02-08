@@ -1,5 +1,5 @@
 function parm = ELPShape2Equation(elpshape)
-% ĞÎ×´²ÎÊı×ª·½³Ì²ÎÊı£ºÇ°Á½¸öÖĞĞÄµã£¬È»ºó°ë³¤¶ÌÖá
+% å½¢çŠ¶å‚æ•°è½¬æ–¹ç¨‹å‚æ•°ï¼šå‰ä¸¤ä¸ªä¸­å¿ƒç‚¹ï¼Œç„¶ååŠé•¿çŸ­è½´
 xc = elpshape(1); yc = elpshape(2); a = elpshape(3); b = elpshape(4); theta = elpshape(5);
 
 parm = zeros(1,5);

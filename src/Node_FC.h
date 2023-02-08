@@ -2,9 +2,9 @@
 
 #include <opencv2/opencv.hpp>
 
-#define PIXEL_SCALE 100 //Êý¾Ý³ß´ç£¬ÓÃÓÚÌá¸ßÊýÖµ¾«¶È
+#define PIXEL_SCALE 100 //æ•°æ®å°ºå¯¸ï¼Œç”¨äºŽæé«˜æ•°å€¼ç²¾åº¦
 
-#define MAT_NUMBER 15   //Ò»¸ö6*6¾ØÕó¿ÉÒÔÓÃ15¸ö²ÎÊý±íÊ¾
+#define MAT_NUMBER 15   //ä¸€ä¸ª6*6çŸ©é˜µå¯ä»¥ç”¨15ä¸ªå‚æ•°è¡¨ç¤º
 
 
 class Node_FC

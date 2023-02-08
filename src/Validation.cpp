@@ -555,7 +555,7 @@ bool FLED::fastValidation(cv::RotatedRect &res, double *detScore)
 
 	float m = r / R;
 
-	if (m < 0.2) { detScore = 0; return false; } // \B3\F6\CF\D6\D4\E0\CA\FD\BEݣ\ACʹ\D3\C3\D5ⷽ\B7\A8\BD\E2\BE\F6
+	if (m < 0.2) { detScore = 0; return false; } // \B3\F6\CF\D6\D4\E0\CA\FD\BE荩\AC使\D3\C3\D5夥絓B7\A8\BD\E2\BE\F6
 	if (m < 0.4) m = 0.4;
 
 #if !FASTER_ELLIPSE_VALIDATION
@@ -689,12 +689,12 @@ bool FLED::fastValidation(cv::RotatedRect &res, double *detScore)
 			continue;
 		}
 		onNum += 1;
-		//\BB\F1ȡ\D5\E6ʵ\B1\DFԵ\B5\E3
+		//\BB\F1取\D5\E6实\B1\DF缘\B5\E3
 		xOffset = _boldData[idxixy] / 10; yOffset = _boldData[idxixy] - 10 * xOffset;
 		xOffset = xOffset - 1; yOffset = yOffset - 2;
 		xReal = x - xOffset; yReal = y - yOffset;
 		idxdxyReal = dIDX(xReal, yReal);
-		// \B9\C0\BCƵ\B1ǰ\B5\E3\B5\C4\CCݶ\C8ֵ
+		// \B9\C0\BC频\B1前\B5\E3\B5\C4\CC荻\C8值
 #if DEFINITE_ERROR_BOUNDED
 		node_center = data + idxdxyReal;
 

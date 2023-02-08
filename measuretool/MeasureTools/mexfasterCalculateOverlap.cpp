@@ -13,11 +13,11 @@ void mexFunction(int nlhs,       mxArray *plhs[],
 {
     if(nlhs!=2)
     {
-        mexErrMsgTxt("Êä³ö²ÎÊı¸öÊı±ØĞëÎª2¸ö.");
+        mexErrMsgTxt("è¾“å‡ºå‚æ•°ä¸ªæ•°å¿…é¡»ä¸º2ä¸ª.");
     }
     if(nrhs!=2)
     {
-        mexErrMsgTxt("ÊäÈë²ÎÊı¸öÊı±ØĞëÎª2¸ö.");
+        mexErrMsgTxt("è¾“å…¥å‚æ•°ä¸ªæ•°å¿…é¡»ä¸º2ä¸ª.");
     }
     
     // Get the data;
